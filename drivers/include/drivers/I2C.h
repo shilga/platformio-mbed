@@ -186,7 +186,9 @@ public:
 
     virtual ~I2C()
     {
-        // Do nothing
+        lock();
+        i2c_free(&_i2c);
+        unlock();
     }
 
 #if DEVICE_I2C_ASYNCH
